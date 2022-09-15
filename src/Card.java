@@ -9,7 +9,8 @@ public class Card {
         1 = Ace, 11 = Jack, 12 = Queen, and 13 = King. intNum should be 10 for face cards
      */
     public Card(int cardNum, String suit) {
-
+        this.suit = suit;
+        cardNum = intValue;
     }
 
     public int getIntValue() {
