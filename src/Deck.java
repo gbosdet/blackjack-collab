@@ -18,5 +18,5 @@ public class Deck {
         return new Card(11, "Hearts");
     }
 
-
+    //Happy Friday Class! (Don't delete this unless necessary)
 }
