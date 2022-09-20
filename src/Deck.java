@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,11 +13,10 @@ public class Deck {
 
     }
 
-    //TODO: Make drawCard so it returns the card and the end of
+    //TODO: Make drawCard so it returns the card at the end of
     // the list and removes it from the list
     public Card drawCard() {
-        return new Card(11, "Hearts");
+        return deck.remove(deck.size() - 1);
     }
-
     //Happy Friday Class! (Don't delete this unless necessary)
 }
