@@ -4,4 +4,25 @@
  */
 
 public class Player {
+    private String name;
+    private int cash;
+    private int highScore;
+
+    public Player(String name){
+        this.name = name;
+        cash = 0;
+        highScore = 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCash() {
+        return cash;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
 }
