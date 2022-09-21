@@ -8,7 +8,7 @@ public class Main {
         input = new Scanner(System.in);
         /* TODO: Use other classes to make it work */
 
-
+        String name = input.nextLine();
 
 
 
