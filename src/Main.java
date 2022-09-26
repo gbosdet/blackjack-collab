@@ -12,6 +12,8 @@ public class Main {
         deck = new Deck();
       playerHand = new ArrayList();
         /* TODO: Use other classes to make it work */
+        System.out.println("Hello! What is your name?");
+        player = new Player(input.nextLine());
         HitOrStand();
 
         //public void playerName() {
@@ -27,6 +29,12 @@ public class Main {
                 String a = input.nextLine();
                 a.toUpperCase();
                 char b = a.charAt(0);
+
+
+
+
+
+
 
                 switch (b) {
                     case ('H'):

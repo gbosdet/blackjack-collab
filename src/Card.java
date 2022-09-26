@@ -13,7 +13,20 @@ public class Card {
 
     public Card(int cardNum, String suit) {
         this.suit = suit;
-        cardNum = intValue;
+        intValue = Math.min(cardNum, 10);
+        switch(cardNum){
+            case 1:
+                stringValue = "Ace"; break;
+            case 11:
+                stringValue = "Jack"; break;
+            case 12:
+                stringValue = "Queen"; break;
+            case 13:
+                stringValue = "King"; break;
+            default:
+                stringValue = "" + cardNum;
+
+        }
     }
 
     public int getIntValue() {
