@@ -10,7 +10,14 @@ public class Deck {
 
      */
     public Deck() {
-
+        this.deck = new ArrayList<>();
+        for(int i = 1; i <= 13; i++){
+                deck.add(new Card(i, "Diamonds"));
+                deck.add(new Card(i, "Spades"));
+                deck.add(new Card(i, "Hearts"));
+                deck.add(new Card(i, "Clubs"));
+        }
+        Collections.shuffle(deck);
     }
 
     //TODO: Make drawCard so it returns the card at the end of
