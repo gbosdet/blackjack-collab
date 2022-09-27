@@ -5,6 +5,7 @@ public class Main {
     static Player player;
     static Scanner input;
 
+
     public static int aces(ArrayList<Card> hand){
         int numaces = 0;
         int value = 0;
@@ -29,7 +30,7 @@ public class Main {
         input = new Scanner(System.in);
         /* TODO: Use other classes to make it work */
 /*        System.out.println("Hello! What is your name?");
-        String name = input.nextLine();*/
+        player = new Player(input.nextLine());
 
         ArrayList<Card> test = new ArrayList<Card>();
         test.add(new Card(1, "Diamonds"));
@@ -37,8 +38,6 @@ public class Main {
         //test.add(new Card(1, "Hearts"));
 
         System.out.println("result: "+aces(test));
-
-
 
 
 

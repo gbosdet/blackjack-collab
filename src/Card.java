@@ -11,12 +11,14 @@ public class Card {
     public Card(int cardNum, String suit) {
         this.suit = suit;
         intValue = Math.min(cardNum, 10);
+
         switch (cardNum) {
             case 1 -> stringValue = "Ace";
             case 11 -> stringValue = "Jack";
             case 12 -> stringValue = "Queen";
             case 13 -> stringValue = "King";
             default -> stringValue = "" + cardNum;
+
         }
     }
 
