@@ -9,8 +9,11 @@ public class Main {
     static Scanner input;
     static Deck deck;
     static ArrayList<Card> playerHand;
+    static ArrayList<Card> dealerHand;
+    static boolean start = true;
     static boolean w = true;
-    static boolean game = true;
+    static boolean d = true;
+
 
 
 
@@ -19,22 +22,60 @@ public class Main {
         input = new Scanner(System.in);
         deck = new Deck();
         playerHand = new ArrayList<>();
+        dealerHand = new ArrayList<>();
         /* TODO: Use other classes to make it work */
 
 
         System.out.println("Hello! What is your name?");
         player = new Player(input.nextLine());
-            while (game == true) {
-                dealPlayerHand();
-                HitOrStand();
+            while (true) {
+                while (d || w) {
+                    if (start) {
+                        dealHands();
+                    }
+                    HitOrStand();
+                    if (d) {
+                        dealerPlay();
+                    }
+                }
+                endGame();
+                System.out.println("Do you want to play again? Y/N");
+                if(input.next().toUpperCase().charAt(0) == 'Y'){
+                    reset();
+                }
+                else{
+                    System.out.println("Thanks for playing");
+                    System.exit(0);
+                }
             }
+    }
+
+    private static void reset() {
+        w = true;
+        d = true;
+        start = true;
+        playerHand.clear();
+        dealerHand.clear();
+        deck = new Deck();
+    }
+
+    private static void dealerPlay() {
+        if(aces(dealerHand) < 16 || aces(playerHand) > aces(dealerHand)){
+            dealerHand.add(deck.drawCard());
+            System.out.println("\nThe dealer was dealt \n" + dealerHand + "\n");
+            aces(dealerHand);
+        }
+        else{
+            System.out.println("The dealer stands");
+            d = false;
+        }
     }
 
     public static void HitOrStand() {
 
-        while (w == true) {
+        if (w == true) {
             System.out.println("Would you like to (H)it or (S)tand?");
-            String a = input.nextLine();
+            String a = input.next();
             a = a.toUpperCase();
             char b = a.charAt(0);
 
@@ -49,26 +90,31 @@ public class Main {
         }
     }
 
-    public static void dealPlayerHand() {
+    public static void dealHands() {
         playerHand.add(deck.drawCard());
+        dealerHand.add(deck.drawCard());
         playerHand.add(deck.drawCard());
+        dealerHand.add(deck.drawCard());
         System.out.println("\nYou were dealt \n" + playerHand + "\n");
         aces(playerHand);
+        System.out.println("\nThe dealer was dealt \n" + dealerHand + "\n");
+        aces(dealerHand);
+        start = false;
     }
-    public static void checkHandTotal (){
-        if (playerTotal > 21){
-            System.out.println("You bust! Game over!");
-            game = false;
-            w = false;
-            endGame();
-        }
-    }
+//    public static void checkHandTotal (){
+//        if (playerTotal > 21){
+//            System.out.println("You bust! Game over!");
+//            game = false;
+//            w = false;
+//            endGame();
+//        }
+//    }
 
     public static void playerHit() {
         playerHand.add(deck.drawCard());
         playerTotal = aces(playerHand) ;
         System.out.println(playerHand);
-        checkHandTotal();
+        //checkHandTotal();
         System.out.println("Your total is " + playerTotal);
 
     }
@@ -92,8 +138,12 @@ public class Main {
         return value;
     }
     public static void endGame (){
-        System.out.println("Do you want to play again? Y/N");
-
+        if((aces(dealerHand) > 21 || aces(playerHand) > aces(dealerHand)) && aces(playerHand) <= 21){
+            System.out.println("You win! Congratulations!");
+        }
+        else{
+            System.out.println("You lose. Better luck next time");
+        }
     }
 }
 
