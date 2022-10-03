@@ -8,6 +8,9 @@ public class Card {
     /*TODO: Finish constructor. CardNum argument has range of 1-13 where
         1 = Ace, 11 = Jack, 12 = Queen, and 13 = King. intNum should be 10 for face cards
      */
+
+
+
     public Card(int cardNum, String suit) {
         this.suit = suit;
         intValue = Math.min(cardNum, 10);
